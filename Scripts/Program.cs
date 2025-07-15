@@ -94,8 +94,6 @@ public class Program
     {
         CommandLineHelpers.HandleDefaultOptions(options);
 
-        ColourConsole.WriteInfoLine("Running 'dotnet test'");
-
         var godot = ExecutableFinder.Which("godot");
 
         if (string.IsNullOrEmpty(godot))
@@ -115,6 +113,8 @@ public class Program
 
         int result;
 
+        ColourConsole.WriteInfoLine("Running 'dotnet test'");
+
         // Run plain C# tests first
         {
             var startInfo = new ProcessStartInfo("dotnet");
@@ -133,10 +133,12 @@ public class Program
             }
         }
 
+        ColourConsole.WriteInfoLine("Running tests with gdUnit");
+
         const int maxTries = 2;
 
         // Then gdUnit
-        TestRunningHelpers.GenerateRunSettings(godot, AssemblyInfoReader.ReadRunTimeFromCsproj("Thrive.csproj"), false);
+        TestRunningHelpers.GenerateRunSettings(godot, false);
 
         // gdUnit can randomly fail once to detect available tests, that's why the tests run multiple times on fail
         // (which is not ideal, but it should hopefully be relatively rare for the tests to actually fail for real)
@@ -149,6 +151,10 @@ public class Program
             startInfo.ArgumentList.Add("--verbosity");
             startInfo.ArgumentList.Add(TestRunningHelpers.TEST_RUN_VERBOSITY);
             startInfo.ArgumentList.Add("Thrive.csproj");
+
+            // TODO: test code
+            startInfo.ArgumentList.Add("--diag");
+            startInfo.ArgumentList.Add("diag.log");
 
             result = ProcessRunHelpers.RunProcessAsync(startInfo, tokenSource.Token, false)
                 .Result.ExitCode;
