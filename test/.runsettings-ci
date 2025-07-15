@@ -10,20 +10,21 @@
         <EnvironmentVariables>
             <GODOT_BIN>/home/runner/godot-linux/godot</GODOT_BIN>
         </EnvironmentVariables>
-        <!-- -->
+        <!--
         <TestAdaptersPaths>.;/root/.nuget/packages/microsoft.codecoverage/17.14.1/build/netstandard2.0/</TestAdaptersPaths>
         <TargetPlatform>X64</TargetPlatform>
         <TargetFrameworkVersion>.NETCoreApp,Version=v9.0</TargetFrameworkVersion>
         <InIsolation>true</InIsolation>
         <DesignMode>False</DesignMode>
         <CollectSourceInformation>False</CollectSourceInformation>
+        -->
     </RunConfiguration>
 
     <LoggerRunSettings>
         <Loggers>
             <Logger friendlyName="console" enabled="True">
                 <Configuration>
-                    <Verbosity>detailed</Verbosity>
+                    <Verbosity>normal</Verbosity>
                 </Configuration>
             </Logger>
             <Logger friendlyName="html" enabled="True">
@@ -40,8 +41,8 @@
     </LoggerRunSettings>
 
     <GdUnit4>
-        <CompileProcessTimeout>660000</CompileProcessTimeout>
-        <Parameters>--verbose --headless</Parameters>
+        <CompileProcessTimeout>60000</CompileProcessTimeout>
+        <Parameters>--headless</Parameters>
         <DisplayName>FullyQualifiedName</DisplayName>
         <CaptureStdOut>true</CaptureStdOut>
     </GdUnit4>
