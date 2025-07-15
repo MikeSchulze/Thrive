@@ -42,6 +42,10 @@
   <ItemGroup Condition="'$(Configuration)' != 'ExportRelease'">
     <PackageReference Include="gdUnit4.api" Version="5.0.0" />
     <PackageReference Include="gdUnit4.test.adapter" Version="3.0.0" />
+    <!--
+    <ProjectReference Include="..\gdUnit4Net\Api\GdUnit4Api.csproj"/>
+    <ProjectReference Include="..\gdUnit4Net\TestAdapter\GdUnit4TestAdapter.csproj"/>
+    -->
     <!-- Re-enable this this once newer compiler versions are deployed everywhere
     <PackageReference Include="gdUnit4.analyzers" Version="1.0.0">
       <PrivateAssets>none</PrivateAssets>
